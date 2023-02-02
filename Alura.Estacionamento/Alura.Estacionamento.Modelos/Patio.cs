@@ -38,7 +38,7 @@ namespace Alura.Estacionamento.Alura.Estacionamento.Modelos
             {
                 if (v.Placa == placa)
                 {
-                    v.HoraSaida = DateTime.Now;
+                    v.HoraSaida = DateTime.Now.AddSeconds(1);
                     TimeSpan tempoPermanencia = v.HoraSaida - v.HoraEntrada;
                     double valorASerCobrado = 0;
                     if (v.Tipo == TipoVeiculo.Automovel)
