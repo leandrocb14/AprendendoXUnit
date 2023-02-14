@@ -44,6 +44,51 @@ public class VeiculoTeste : IDisposable
         Assert.Equal(-150, veiculo.VelocidadeAtual);
     }
 
+    [Fact]
+    public void TestaExcecaoPlacaDiferenteDeOitoCaracteres()
+    {
+        Assert.Throws<FormatException>(() =>
+        {
+            veiculo.Placa = "ABC";
+        });
+    }
+
+    [Fact]
+    public void TestaExcecaoPlacaComPlacaIniciandoComNumeros()
+    {
+        Assert.Throws<FormatException>(() =>
+        {
+            veiculo.Placa = "123-ABCD";
+        });
+    }
+
+    [Fact]
+    public void TestaExcecaoPlacaSemTracoNaQuartaPosicao()
+    {
+        Assert.Throws<FormatException>(() =>
+        {
+            veiculo.Placa = "AB-C1234";
+        });
+    }
+
+    [Fact]
+    public void TestaExcecaoNomeProprietarioVeiculoComMenosDeTresCaracteres()
+    {
+        Assert.Throws<FormatException>(() =>
+        {
+            veiculo.Proprietario = "AB";
+        });
+    }
+
+    [Fact]
+    public void TestaExcecaoPlacaTerminandoSemNumeros()
+    {
+        Assert.Throws<FormatException>(() =>
+        {
+            veiculo.Placa = "ABC-DEFG";
+        });
+    }
+
     [Fact(Skip = "Teste não implementado")]
     public void ValidaNomeProprietarioDoVeiculo()
     {
